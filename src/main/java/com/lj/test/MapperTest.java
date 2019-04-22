@@ -9,12 +9,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.lj.dao.StudentMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:applicationContext.xml"})
+@ContextConfiguration(locations = { "classpath:applicationContext.xml" })
 public class MapperTest {
-	@Autowired 
+	
+	@Autowired
 	StudentMapper studentmapper;
-  @Test
-  public void test(){
-	  System.out.println(studentmapper);
-  }
+	
+	@Test
+	public void test() {
+		System.out.println(studentmapper);
+	}
 }
