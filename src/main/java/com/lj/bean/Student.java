@@ -1,7 +1,23 @@
 package com.lj.bean;
 
 public class Student {
-    private Integer id;
+    public Student() {
+		super();
+		
+	}
+
+	public Student(Integer id, String tName, String studentClass, String studentNumbert, String tPassword,
+			Integer teaId) {
+		super();
+		this.id = id;
+		this.tName = tName;
+		this.studentClass = studentClass;
+		this.studentNumbert = studentNumbert;
+		this.tPassword = tPassword;
+		this.teaId = teaId;
+	}
+
+	private Integer id;
 
     private String tName;
 
