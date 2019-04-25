@@ -1,12 +1,96 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>员工列表</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>学生列表</title>
+<%
+	pageContext.setAttribute("APP_PATH", request.getContextPath());
+%>
+<script type="text/javascript"
+	src="${APP_PATH}/static/js/jquery-1.12.4.min.js"></script>
+<link
+	href="${APP_PATH}/static/bootstrap-3.3.7-dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="${APP_PATH }/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-
+	<div class="container">
+		<div clss="row"></div>
+		<div class="col-md-12">
+			<h1>学生列表</h1>
+		</div>
+		<div clss="row">
+			<div class="col-md-4 col-md-offset-8">
+				<button class="btn btn-primary">新增</button>
+				<button class="btn btn-danger">删除</button>
+			</div>
+		</div>
+		<div clss="row">
+			<div class="col-md-12">
+				<table class="table table-hover table-bordered">
+					<tr>
+						<th>#</th>
+						<th>姓名</th>
+						<th>班级</th>
+						<th>邮箱</th>
+						<th>密码</th>
+						<th>操作</th>
+					</tr>
+					<c:forEach items="${pageInfo.list }" var="stu">
+					<tr>
+					
+					
+							<th>${stu.id}</th>
+							<th>${stu.tName}</th>
+						<th>${stu.studentClass}</th>
+							<th>${stu.studentNumbert}</th>
+							<th>${stu.tPassword}</th>
+							<th>
+								<button class="btn btn-primary btn-sm">
+									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+									编辑
+								</button>
+								<button class="btn btn-danger btn-sm">
+									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+									删除
+								</button>
+							</th>
+							
+						</tr>
+				
+					</c:forEach>
+						
+				</table>
+			</div>
+		</div>
+		<div clss="row">
+			<div class="col-md-6">当前 ${pageInfo.pageNum }页,总${pageInfo.pages }
+				页,总 ${pageInfo.total } 条记录</div>
+			<div class="col-md-6">
+				<nav aria-label="Page navigation">
+				<ul class="pagination">
+					<li><a href="#">首页</a></li>
+					<li><a href="#" aria-label="Previous"> <span
+							aria-hidden="true">&laquo;</span>
+					</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#" aria-label="Next"> <span
+							aria-hidden="true">&raquo;</span>
+					</a></li>
+					<li><a href="#">末页</a></li>
+				</ul>
+				</nav>
+			</div>
+		</div>
 </body>
 </html>
