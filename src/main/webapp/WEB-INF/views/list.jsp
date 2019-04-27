@@ -44,8 +44,6 @@
 					</tr>
 					<c:forEach items="${pageInfo.list }" var="stu">
 					<tr>
-					
-					
 							<th>${stu.id}</th>
 							<th>${stu.tName}</th>
 						<th>${stu.studentClass}</th>
@@ -75,19 +73,29 @@
 			<div class="col-md-6">
 				<nav aria-label="Page navigation">
 				<ul class="pagination">
-					<li><a href="#">首页</a></li>
-					<li><a href="#" aria-label="Previous"> <span
-							aria-hidden="true">&laquo;</span>
-					</a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#" aria-label="Next"> <span
-							aria-hidden="true">&raquo;</span>
-					</a></li>
-					<li><a href="#">末页</a></li>
+					<li><a href="${APP_PATH }/emps?pn=1">首页</a></li>
+					<c:if test="${pageInfo.hasPreviousPage }">
+						<li><a href="${APP_PATH }/emps?pn=${pageInfo.pageNum-1}"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+						</a></li>
+					</c:if>
+
+
+					<c:forEach items="${pageInfo.navigatepageNums }" var="page_Num">
+						<c:if test="${page_Num == pageInfo.pageNum }">
+							<li class="active"><a href="#">${page_Num }</a></li>
+						</c:if>
+						<c:if test="${page_Num != pageInfo.pageNum }">
+							<li><a href="${APP_PATH }/emps?pn=${page_Num }">${page_Num }</a></li>
+						</c:if>
+
+					</c:forEach>
+					<c:if test="${pageInfo.hasNextPage }">
+						<li><a href="${APP_PATH }/emps?pn=${pageInfo.pageNum+1 }"
+							aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+						</a></li>
+					</c:if>
+					<li><a href="${APP_PATH }/emps?pn=${pageInfo.pages}">末页</a></li>
 				</ul>
 				</nav>
 			</div>

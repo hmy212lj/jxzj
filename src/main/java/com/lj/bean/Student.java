@@ -28,8 +28,18 @@ public class Student {
     private String tPassword;
 
     private Integer teaId;
+    
+    private Teacher teacher;
 
-    public Integer getId() {
+    public Teacher getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
+
+	public Integer getId() {
         return id;
     }
 
