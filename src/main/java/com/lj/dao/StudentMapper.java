@@ -15,10 +15,13 @@ public interface StudentMapper {
     int insert(Student record);
 
     int insertSelective(Student record);
+    
 
     List<Student> selectByExample(StudentExample example);
 
     Student selectByPrimaryKey(Integer id);
+    
+    Student selectByName(String name);
 
     int updateByExampleSelective(@Param("record") Student record, @Param("example") StudentExample example);
 

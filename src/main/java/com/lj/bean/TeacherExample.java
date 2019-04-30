@@ -1,7 +1,6 @@
 package com.lj.bean;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class TeacherExample {
@@ -235,63 +234,73 @@ public class TeacherExample {
             return (Criteria) this;
         }
 
-        public Criteria andTeacherBirIsNull() {
-            addCriterion("teacher_bir is null");
+        public Criteria andTeacherCountIsNull() {
+            addCriterion("teacher_count is null");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherBirIsNotNull() {
-            addCriterion("teacher_bir is not null");
+        public Criteria andTeacherCountIsNotNull() {
+            addCriterion("teacher_count is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherBirEqualTo(Date value) {
-            addCriterion("teacher_bir =", value, "teacherBir");
+        public Criteria andTeacherCountEqualTo(String value) {
+            addCriterion("teacher_count =", value, "teacherCount");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherBirNotEqualTo(Date value) {
-            addCriterion("teacher_bir <>", value, "teacherBir");
+        public Criteria andTeacherCountNotEqualTo(String value) {
+            addCriterion("teacher_count <>", value, "teacherCount");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherBirGreaterThan(Date value) {
-            addCriterion("teacher_bir >", value, "teacherBir");
+        public Criteria andTeacherCountGreaterThan(String value) {
+            addCriterion("teacher_count >", value, "teacherCount");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherBirGreaterThanOrEqualTo(Date value) {
-            addCriterion("teacher_bir >=", value, "teacherBir");
+        public Criteria andTeacherCountGreaterThanOrEqualTo(String value) {
+            addCriterion("teacher_count >=", value, "teacherCount");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherBirLessThan(Date value) {
-            addCriterion("teacher_bir <", value, "teacherBir");
+        public Criteria andTeacherCountLessThan(String value) {
+            addCriterion("teacher_count <", value, "teacherCount");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherBirLessThanOrEqualTo(Date value) {
-            addCriterion("teacher_bir <=", value, "teacherBir");
+        public Criteria andTeacherCountLessThanOrEqualTo(String value) {
+            addCriterion("teacher_count <=", value, "teacherCount");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherBirIn(List<Date> values) {
-            addCriterion("teacher_bir in", values, "teacherBir");
+        public Criteria andTeacherCountLike(String value) {
+            addCriterion("teacher_count like", value, "teacherCount");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherBirNotIn(List<Date> values) {
-            addCriterion("teacher_bir not in", values, "teacherBir");
+        public Criteria andTeacherCountNotLike(String value) {
+            addCriterion("teacher_count not like", value, "teacherCount");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherBirBetween(Date value1, Date value2) {
-            addCriterion("teacher_bir between", value1, value2, "teacherBir");
+        public Criteria andTeacherCountIn(List<String> values) {
+            addCriterion("teacher_count in", values, "teacherCount");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherBirNotBetween(Date value1, Date value2) {
-            addCriterion("teacher_bir not between", value1, value2, "teacherBir");
+        public Criteria andTeacherCountNotIn(List<String> values) {
+            addCriterion("teacher_count not in", values, "teacherCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherCountBetween(String value1, String value2) {
+            addCriterion("teacher_count between", value1, value2, "teacherCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherCountNotBetween(String value1, String value2) {
+            addCriterion("teacher_count not between", value1, value2, "teacherCount");
             return (Criteria) this;
         }
 

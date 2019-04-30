@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.lj.bean.Teacher">
     <id column="t_ids" jdbcType="INTEGER" property="tIds" />
     <result column="teacher_name" jdbcType="VARCHAR" property="teacherName" />
-    <result column="teacher_bir" jdbcType="TIMESTAMP" property="teacherBir" />
+    <result column="teacher_count" jdbcType="VARCHAR" property="teacherCount" />
     <result column="teacher_dept" jdbcType="VARCHAR" property="teacherDept" />
     <result column="teacher_num" jdbcType="VARCHAR" property="teacherNum" />
     <result column="teacher_emils" jdbcType="VARCHAR" property="teacherEmils" />
@@ -68,8 +68,14 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    t_ids, teacher_name, teacher_bir, teacher_dept, teacher_num, teacher_emils
+    t_ids, teacher_name, teacher_count, teacher_dept, teacher_num, teacher_emils
   </sql>
+   <select id="selectByCount" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from teacher
+    where teacher_count = #{teacher_count,jdbcType=VARCHAR}
+  </select>
   <select id="selectByExample" parameterType="com.lj.bean.TeacherExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -101,10 +107,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.lj.bean.Teacher">
-    insert into teacher (t_ids, teacher_name, teacher_bir, 
+    insert into teacher (t_ids, teacher_name, teacher_count, 
       teacher_dept, teacher_num, teacher_emils
       )
-    values (#{tIds,jdbcType=INTEGER}, #{teacherName,jdbcType=VARCHAR}, #{teacherBir,jdbcType=TIMESTAMP}, 
+    values (#{tIds,jdbcType=INTEGER}, #{teacherName,jdbcType=VARCHAR}, #{teacherCount,jdbcType=VARCHAR}, 
       #{teacherDept,jdbcType=VARCHAR}, #{teacherNum,jdbcType=VARCHAR}, #{teacherEmils,jdbcType=VARCHAR}
       )
   </insert>
@@ -117,8 +123,8 @@
       <if test="teacherName != null">
         teacher_name,
       </if>
-      <if test="teacherBir != null">
-        teacher_bir,
+      <if test="teacherCount != null">
+        teacher_count,
       </if>
       <if test="teacherDept != null">
         teacher_dept,
@@ -137,8 +143,8 @@
       <if test="teacherName != null">
         #{teacherName,jdbcType=VARCHAR},
       </if>
-      <if test="teacherBir != null">
-        #{teacherBir,jdbcType=TIMESTAMP},
+      <if test="teacherCount != null">
+        #{teacherCount,jdbcType=VARCHAR},
       </if>
       <if test="teacherDept != null">
         #{teacherDept,jdbcType=VARCHAR},
@@ -166,8 +172,8 @@
       <if test="record.teacherName != null">
         teacher_name = #{record.teacherName,jdbcType=VARCHAR},
       </if>
-      <if test="record.teacherBir != null">
-        teacher_bir = #{record.teacherBir,jdbcType=TIMESTAMP},
+      <if test="record.teacherCount != null">
+        teacher_count = #{record.teacherCount,jdbcType=VARCHAR},
       </if>
       <if test="record.teacherDept != null">
         teacher_dept = #{record.teacherDept,jdbcType=VARCHAR},
@@ -187,7 +193,7 @@
     update teacher
     set t_ids = #{record.tIds,jdbcType=INTEGER},
       teacher_name = #{record.teacherName,jdbcType=VARCHAR},
-      teacher_bir = #{record.teacherBir,jdbcType=TIMESTAMP},
+      teacher_count = #{record.teacherCount,jdbcType=VARCHAR},
       teacher_dept = #{record.teacherDept,jdbcType=VARCHAR},
       teacher_num = #{record.teacherNum,jdbcType=VARCHAR},
       teacher_emils = #{record.teacherEmils,jdbcType=VARCHAR}
@@ -201,8 +207,8 @@
       <if test="teacherName != null">
         teacher_name = #{teacherName,jdbcType=VARCHAR},
       </if>
-      <if test="teacherBir != null">
-        teacher_bir = #{teacherBir,jdbcType=TIMESTAMP},
+      <if test="teacherCount != null">
+        teacher_count = #{teacherCount,jdbcType=VARCHAR},
       </if>
       <if test="teacherDept != null">
         teacher_dept = #{teacherDept,jdbcType=VARCHAR},
@@ -219,7 +225,7 @@
   <update id="updateByPrimaryKey" parameterType="com.lj.bean.Teacher">
     update teacher
     set teacher_name = #{teacherName,jdbcType=VARCHAR},
-      teacher_bir = #{teacherBir,jdbcType=TIMESTAMP},
+      teacher_count = #{teacherCount,jdbcType=VARCHAR},
       teacher_dept = #{teacherDept,jdbcType=VARCHAR},
       teacher_num = #{teacherNum,jdbcType=VARCHAR},
       teacher_emils = #{teacherEmils,jdbcType=VARCHAR}

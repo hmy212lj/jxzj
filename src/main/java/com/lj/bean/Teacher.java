@@ -1,13 +1,11 @@
 package com.lj.bean;
 
-import java.util.Date;
-
 public class Teacher {
     private Integer tIds;
 
     private String teacherName;
 
-    private Date teacherBir;
+    private String teacherCount;
 
     private String teacherDept;
 
@@ -31,12 +29,12 @@ public class Teacher {
         this.teacherName = teacherName == null ? null : teacherName.trim();
     }
 
-    public Date getTeacherBir() {
-        return teacherBir;
+    public String getTeacherCount() {
+        return teacherCount;
     }
 
-    public void setTeacherBir(Date teacherBir) {
-        this.teacherBir = teacherBir;
+    public void setTeacherCount(String teacherCount) {
+        this.teacherCount = teacherCount == null ? null : teacherCount.trim();
     }
 
     public String getTeacherDept() {

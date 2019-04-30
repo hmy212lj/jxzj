@@ -1,11 +1,15 @@
 package com.lj.controller;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -15,8 +19,6 @@ import com.github.pagehelper.PageInfo;
 import com.lj.bean.*;
 
 /**
- * ´¦ÀíÑ§ÉúÔöÉ¾¸Ä²é
- * 
  * @author liu
  *
  */
@@ -27,12 +29,12 @@ public class StudentController {
 	StudentService studentservice;
 
 	/**
-	 * ²éÑ¯Ñ§ÉúÊý¾Ý
+	 * ï¿½ï¿½Ñ¯Ñ§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @return
 	 */
 	/**
-	 * µ¼Èëjackson°ü 
+	 * ï¿½ï¿½ï¿½ï¿½jacksonï¿½ï¿½ 
 	 * @param pn
 	 * @return
 	 */
@@ -40,22 +42,32 @@ public class StudentController {
 	@ResponseBody
 	public Msg getstujson(@RequestParam(value = "pn", defaultValue = "1") Integer pn) {
 		PageHelper.startPage(pn, 10);
-		// startpage½ô¸úµÄ²éÑ¯Ê±·ÖÒ³²éÑ¯
+		// startpageï¿½ï¿½ï¿½ï¿½ï¿½Ä²ï¿½Ñ¯Ê±ï¿½ï¿½Ò³ï¿½ï¿½Ñ¯
 		List<Student> stu = studentservice.getAll();
-		// ·â×°ÁËÏêÏ¸µÄ·ÖÒ³ÐÅÏ¢
+		// ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½Ä·ï¿½Ò³ï¿½ï¿½Ï¢
 		PageInfo page = new PageInfo(stu,5);
 		return Msg.success().add("pageInfo", page);
 	}
+	
+	
+	
+	
+    @RequestMapping(value="login",method=RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> login(String login_name,String login_password,HttpServletRequest request){
+        return studentservice.loginValid(login_name, login_password, request);
+    }
 
-/*	// @RequestMapping(value="/stus")
+
+/* @RequestMapping(value="/stus")
 	public String getStu(@RequestParam(value = "pn", defaultValue = "1") Integer pn, Model model) {
-		// Õâ²»ÊÇ·ÖÒ³²éÑ¯£¬
-		// ÒýÈëpagehelper·ÖÒ³
-		// ²éÑ¯Ö®Ç°
+		// ï¿½â²»ï¿½Ç·ï¿½Ò³ï¿½ï¿½Ñ¯ï¿½ï¿½
+		// ï¿½ï¿½ï¿½ï¿½pagehelperï¿½ï¿½Ò³
+		// ï¿½ï¿½Ñ¯Ö®Ç°
 		PageHelper.startPage(pn, 10);
-		// startpage½ô¸úµÄ²éÑ¯Ê±·ÖÒ³²éÑ¯
+		// startpageï¿½ï¿½ï¿½ï¿½ï¿½Ä²ï¿½Ñ¯Ê±ï¿½ï¿½Ò³ï¿½ï¿½Ñ¯
 		List<Student> stu = studentservice.getAll();
-		// ·â×°ÁËÏêÏ¸µÄ·ÖÒ³ÐÅÏ¢
+		// ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½Ä·ï¿½Ò³ï¿½ï¿½Ï¢
 		PageInfo page = new PageInfo(stu, 10);
 		model.addAttribute("pageInfo", page);
 		return "list";
