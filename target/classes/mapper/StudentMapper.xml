@@ -70,12 +70,7 @@
   <sql id="Base_Column_List">
     id, t_name, student_class, student_numbert, t_password, tea_id
   </sql>
-   <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from students
-    where t_name = #{t_name,jdbcType=VARCHAR}
-  </select>
+  
   <select id="selectByExample" parameterType="com.lj.bean.StudentExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -95,6 +90,12 @@
     <include refid="Base_Column_List" />
     from students
     where id = #{id,jdbcType=INTEGER}
+  </select>
+   <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from students
+    where t_name = #{t_name}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from students

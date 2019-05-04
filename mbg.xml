@@ -38,7 +38,13 @@
 
 
 		<!-- table指定每个表的生成策略 -->
+	<!-- 	<table tableName="choice" domainObjectName="Choice"></table>
 		<table tableName="students" domainObjectName="Student"></table>
 	 <table tableName="teacher" domainObjectName="Teacher"></table> 
+	 <table tableName="judge" domainObjectName="Judge"></table>  -->
+	
+   <table tableName="grades" domainObjectName="Grades"></table> 
+   <table tableName="testname" domainObjectName="Testname"></table>
+   
 	</context>
 </generatorConfiguration>
